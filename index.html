@@ -971,7 +971,7 @@ function sendEnquiry() {
   const msg = document.getElementById('cMsg').value.trim();
   if (!name || !phone) { showToast('⚠️ Please enter your name and phone'); return; }
   const waMsg = `👋 *Enquiry - Kai Vannam Creations*\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n🛍️ Product: ${product || 'General'}\n💬 Message: ${msg || '-'}`;
-  window.open(`https://wa.me/919566742697?text=${encodeURIComponent(waMsg)}`, '_blank');
+  window.open(`https://wa.me/919025125077?text=${encodeURIComponent(waMsg)}`, '_blank');
   showToast('✓ Opening WhatsApp...');
 }
 
