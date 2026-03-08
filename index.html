@@ -612,7 +612,7 @@
       </div>
       <div class="contact-item">
         <span class="contact-icon">📞</span>
-        <p><a href="tel:+919566742697">+91 95667 42697</a></p>
+        <p><a href="tel:+919025125077">+91 9025125077</a></p>
       </div>
       <div class="contact-item">
         <span class="contact-icon">⏰</span>
@@ -622,7 +622,7 @@
         <span class="contact-icon">🎁</span>
         <p>Custom orders &amp; bulk gifting available. Contact us for pricing!</p>
       </div>
-      <a href="https://wa.me/919566742697?text=Hi%20Kai%20Vannam%20Creations!%20I%27d%20like%20to%20place%20an%20order." class="whatsapp-btn" target="_blank">
+      <a href="https://wa.me/919025125077?text=Hi%20Kai%20Vannam%20Creations!%20I%27d%20like%20to%20place%20an%20order." class="whatsapp-btn" target="_blank">
         <span>💬</span> Chat on WhatsApp
       </a>
     </div>
@@ -664,7 +664,7 @@
     <a href="#products">Shop</a>
     <a href="#contact">Contact</a>
   </div>
-  <a href="https://wa.me/919566742697" target="_blank" style="color:var(--gold);text-decoration:none;font-size:0.85rem;">📞 +91 95667 42697</a>
+  <a href="https://wa.me/919025125077" target="_blank" style="color:var(--gold);text-decoration:none;font-size:0.85rem;">📞 +91 9025125077</a>
   <div class="footer-copy">© 2026 Kai Vannam Creations. All rights reserved.</div>
 </footer>
 
@@ -935,7 +935,7 @@ function confirmOrder() {
   }
   const sub = cart.reduce((s, x) => s + x.price * x.qty, 0);
   const msg = `🎁 *New Order - Kai Vannam Creations*\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Address: ${address}\n💳 Payment: ${payment}\n\n🛍️ *Items:*\n${cart.map(x => `• ${x.name} x${x.qty} = ₹${x.price * x.qty}`).join('\n')}\n\n💰 *Total: ₹${sub + 50}* (incl. delivery)`;
-  const waUrl = `https://wa.me/919566742697?text=${encodeURIComponent(msg)}`;
+  const waUrl = `https://wa.me/919025125077?text=${encodeURIComponent(msg)}`;
   window.open(waUrl, '_blank');
   document.getElementById('orderPanel').innerHTML = `
     <div class="success-msg">
