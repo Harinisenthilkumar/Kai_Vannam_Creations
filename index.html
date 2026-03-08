@@ -1,0 +1,1014 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kai Vannam Creations – Handmade with Love</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c8a96e;
+    --gold-light: #e8d5a3;
+    --cream: #fdf6ec;
+    --brown: #5c3d2e;
+    --dark: #1a0f0a;
+    --glass-bg: rgba(255,255,255,0.12);
+    --glass-border: rgba(200,169,110,0.3);
+    --glass-shadow: rgba(92,61,46,0.15);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: linear-gradient(135deg, #3d1f0f 0%, #5c3d2e 30%, #2c1810 60%, #4a2c1a 100%);
+    min-height: 100vh;
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  /* Animated background orbs */
+  body::before {
+    content: '';
+    position: fixed;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(200,169,110,0.15) 0%, transparent 70%);
+    top: -200px; right: -200px;
+    border-radius: 50%;
+    animation: floatOrb 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(200,100,50,0.1) 0%, transparent 70%);
+    bottom: -100px; left: -100px;
+    border-radius: 50%;
+    animation: floatOrb 12s ease-in-out infinite reverse;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes floatOrb {
+    0%,100% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(30px, -30px) scale(1.1); }
+  }
+
+  /* Glass utility */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px var(--glass-shadow);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    background: rgba(26,15,10,0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-logo span { font-style: italic; font-size: 0.85rem; display: block; color: var(--gold-light); font-family: 'DM Sans', sans-serif; font-weight: 300; letter-spacing: 2px; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--gold); }
+  .cart-btn {
+    background: linear-gradient(135deg, var(--gold), #a07040);
+    color: #fff;
+    border: none; cursor: pointer;
+    padding: 8px 18px; border-radius: 30px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .cart-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(200,169,110,0.4); }
+  .cart-count {
+    position: absolute; top: -6px; right: -6px;
+    background: #e74c3c; color: #fff; border-radius: 50%;
+    width: 18px; height: 18px; font-size: 0.7rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hamburger { display: none; cursor: pointer; background: none; border: none; color: var(--gold); font-size: 1.5rem; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding: 120px 5% 60px;
+  }
+  .hero-content { text-align: center; z-index: 1; max-width: 800px; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(200,169,110,0.2);
+    border: 1px solid var(--glass-border);
+    color: var(--gold-light);
+    font-size: 0.75rem; letter-spacing: 3px;
+    padding: 6px 18px; border-radius: 20px; margin-bottom: 20px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1.1;
+    color: #fff;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-title em { color: var(--gold); font-style: italic; }
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 1.3rem;
+    color: rgba(255,255,255,0.7);
+    margin: 1.2rem 0 2rem;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.8s 0.6s ease both; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), #a07040);
+    color: #fff; padding: 14px 32px; border-radius: 40px;
+    text-decoration: none; font-weight: 500; letter-spacing: 1px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none; cursor: pointer; font-size: 0.9rem; font-family: 'DM Sans', sans-serif;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(200,169,110,0.4); }
+  .btn-outline {
+    background: transparent;
+    color: var(--gold); padding: 14px 32px; border-radius: 40px;
+    text-decoration: none; font-weight: 500; letter-spacing: 1px;
+    border: 1px solid var(--gold);
+    transition: all 0.2s;
+    font-size: 0.9rem; font-family: 'DM Sans', sans-serif; cursor: pointer;
+  }
+  .btn-outline:hover { background: rgba(200,169,110,0.15); transform: translateY(-3px); }
+
+  .hero-floats {
+    position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+  }
+  .float-circle {
+    position: absolute; border-radius: 50%;
+    background: rgba(200,169,110,0.08);
+    border: 1px solid rgba(200,169,110,0.15);
+    animation: spin 20s linear infinite;
+  }
+  .float-circle:nth-child(1) { width: 300px; height: 300px; top: 10%; left: -5%; animation-duration: 25s; }
+  .float-circle:nth-child(2) { width: 200px; height: 200px; bottom: 15%; right: 5%; animation-duration: 20s; animation-direction: reverse; }
+  .float-circle:nth-child(3) { width: 150px; height: 150px; top: 60%; left: 10%; animation-duration: 30s; }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  /* Image mosaic in hero */
+  .hero-mosaic {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 12px;
+    max-width: 500px; margin: 2.5rem auto 0;
+    animation: fadeUp 0.8s 0.8s ease both;
+  }
+  .mosaic-item {
+    border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    aspect-ratio: 1;
+    background: rgba(255,255,255,0.05);
+    transition: transform 0.3s;
+  }
+  .mosaic-item:hover { transform: scale(1.05); }
+  .mosaic-item img { width: 100%; height: 100%; object-fit: cover; }
+  .mosaic-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
+
+  @keyframes fadeUp { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform: translateY(0); } }
+
+  /* ── SECTIONS ── */
+  section { position: relative; z-index: 1; padding: 80px 5%; }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    text-align: center; margin-bottom: 0.5rem;
+    color: #fff;
+  }
+  .section-title em { color: var(--gold); font-style: italic; }
+  .section-sub { text-align: center; color: rgba(255,255,255,0.6); margin-bottom: 3rem; font-size: 0.95rem; }
+  .divider { width: 60px; height: 2px; background: var(--gold); margin: 12px auto 20px; border-radius: 2px; }
+
+  /* ── ABOUT ── */
+  #about { background: rgba(0,0,0,0.2); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    max-width: 1000px; margin: 0 auto; align-items: center;
+  }
+  .about-img {
+    border-radius: 20px; overflow: hidden;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+  .about-img img { width: 100%; height: 350px; object-fit: cover; }
+  .about-text h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 1rem; }
+  .about-text p { color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 1rem; }
+  .badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.5rem; }
+  .badge {
+    background: rgba(200,169,110,0.15);
+    border: 1px solid var(--glass-border);
+    color: var(--gold-light); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem;
+  }
+
+  /* ── GALLERY ── */
+  #gallery { }
+  .gallery-filters { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+  .filter-btn {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.7); padding: 8px 20px; border-radius: 25px;
+    cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
+    transition: all 0.3s;
+  }
+  .filter-btn.active, .filter-btn:hover {
+    background: var(--gold); border-color: var(--gold); color: #fff;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px; max-width: 1200px; margin: 0 auto;
+  }
+  .gallery-item {
+    border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--glass-border);
+    background: rgba(255,255,255,0.05);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+  }
+  .gallery-item:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+  .gallery-item img { width: 100%; height: 250px; object-fit: cover; display: block; }
+  .gallery-label {
+    padding: 12px 15px;
+    background: rgba(26,15,10,0.6);
+    backdrop-filter: blur(10px);
+    font-size: 0.85rem; color: var(--gold-light);
+  }
+  .gallery-item .overlay {
+    position: absolute; inset: 0;
+    background: rgba(26,15,10,0.7);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .gallery-item:hover .overlay { opacity: 1; }
+  .overlay span { color: var(--gold); font-size: 2rem; }
+
+  /* ── PRODUCTS ── */
+  #products { background: rgba(0,0,0,0.15); }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px; max-width: 1200px; margin: 0 auto;
+  }
+  .product-card {
+    border-radius: 20px; overflow: hidden;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex; flex-direction: column;
+  }
+  .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+  .product-img { position: relative; overflow: hidden; }
+  .product-img img { width: 100%; height: 260px; object-fit: cover; display: block; transition: transform 0.4s; }
+  .product-card:hover .product-img img { transform: scale(1.05); }
+  .product-badge {
+    position: absolute; top: 12px; left: 12px;
+    background: var(--gold); color: #fff;
+    padding: 4px 12px; border-radius: 15px; font-size: 0.75rem; font-weight: 500;
+  }
+  .product-info { padding: 18px; flex: 1; display: flex; flex-direction: column; }
+  .product-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 6px; }
+  .product-desc { color: rgba(255,255,255,0.6); font-size: 0.85rem; line-height: 1.6; flex: 1; margin-bottom: 14px; }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; }
+  .product-price { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gold); }
+  .product-price small { font-size: 0.7rem; color: rgba(255,255,255,0.5); font-family: 'DM Sans', sans-serif; }
+  .add-cart {
+    background: linear-gradient(135deg, var(--gold), #a07040);
+    border: none; cursor: pointer; color: #fff;
+    padding: 8px 18px; border-radius: 25px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .add-cart:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(200,169,110,0.4); }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
+  .testi-card {
+    padding: 24px; border-radius: 16px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+  }
+  .testi-stars { color: var(--gold); margin-bottom: 10px; }
+  .testi-text { color: rgba(255,255,255,0.75); line-height: 1.7; font-style: italic; margin-bottom: 14px; }
+  .testi-author { color: var(--gold-light); font-size: 0.85rem; font-weight: 500; }
+
+  /* ── CONTACT ── */
+  #contact { background: rgba(0,0,0,0.2); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1000px; margin: 0 auto; }
+  .contact-info h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--gold); margin-bottom: 1.5rem; }
+  .contact-item { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 1.2rem; }
+  .contact-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .contact-item p { color: rgba(255,255,255,0.75); line-height: 1.6; }
+  .contact-item a { color: var(--gold-light); text-decoration: none; }
+  .contact-item a:hover { color: var(--gold); }
+  .contact-form h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--gold); margin-bottom: 1.5rem; }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px; padding: 12px 16px;
+    color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    outline: none; transition: border-color 0.3s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--gold); }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.35); }
+  .form-group select option { background: #3d1f0f; }
+  .form-group textarea { height: 120px; resize: vertical; }
+  .whatsapp-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #25d366; color: #fff;
+    padding: 14px 28px; border-radius: 40px;
+    text-decoration: none; font-weight: 500;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 1rem;
+  }
+  .whatsapp-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(37,211,102,0.4); }
+
+  /* ── CART MODAL ── */
+  #cart-modal {
+    position: fixed; inset: 0; z-index: 2000;
+    display: none; align-items: flex-start; justify-content: flex-end;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+  }
+  #cart-modal.open { display: flex; }
+  .cart-panel {
+    width: 400px; height: 100vh; overflow-y: auto;
+    background: rgba(26,15,10,0.95);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid var(--glass-border);
+    padding: 30px;
+    animation: slideIn 0.3s ease;
+  }
+  @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+  .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+  .cart-header h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); }
+  .close-cart { background: none; border: none; color: rgba(255,255,255,0.6); font-size: 1.5rem; cursor: pointer; transition: color 0.2s; }
+  .close-cart:hover { color: #fff; }
+  .cart-items { min-height: 200px; }
+  .cart-item { display: flex; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .cart-item-img { width: 60px; height: 60px; border-radius: 10px; object-fit: cover; }
+  .cart-item-info { flex: 1; }
+  .cart-item-info h4 { font-size: 0.9rem; margin-bottom: 4px; }
+  .cart-item-info p { color: var(--gold); font-size: 0.85rem; }
+  .cart-item-qty { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+  .qty-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; width: 24px; height: 24px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; }
+  .cart-item-remove { background: none; border: none; color: rgba(255,100,100,0.7); cursor: pointer; font-size: 0.85rem; align-self: flex-start; }
+  .cart-empty { text-align: center; color: rgba(255,255,255,0.4); padding: 3rem 0; }
+  .cart-total { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--glass-border); }
+  .cart-total-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .cart-total-row.final { font-size: 1.2rem; color: var(--gold); font-family: 'Playfair Display', serif; }
+  .checkout-btn { width: 100%; margin-top: 1.5rem; }
+
+  /* ── ORDER MODAL ── */
+  #order-modal {
+    position: fixed; inset: 0; z-index: 3000;
+    display: none; align-items: center; justify-content: center;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+  }
+  #order-modal.open { display: flex; }
+  .order-panel {
+    width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto;
+    background: rgba(26,15,10,0.97);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px; padding: 36px;
+    animation: scaleIn 0.3s ease;
+  }
+  @keyframes scaleIn { from { opacity:0; transform: scale(0.9); } to { opacity:1; transform: scale(1); } }
+  .order-panel h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--gold); margin-bottom: 1.5rem; }
+  .order-summary { background: rgba(200,169,110,0.1); border-radius: 12px; padding: 14px; margin-bottom: 1.5rem; }
+  .order-summary p { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 4px; }
+  .order-summary .order-total { color: var(--gold); font-size: 1.1rem; font-family: 'Playfair Display', serif; margin-top: 8px; }
+  .success-msg { text-align: center; padding: 2rem 0; }
+  .success-msg .check { font-size: 3rem; margin-bottom: 1rem; }
+  .success-msg h4 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 0.5rem; }
+  .success-msg p { color: rgba(255,255,255,0.65); font-size: 0.9rem; }
+  .modal-close { width: 100%; margin-top: 1.5rem; }
+
+  /* ── LIGHTBOX ── */
+  #lightbox {
+    position: fixed; inset: 0; z-index: 4000;
+    display: none; align-items: center; justify-content: center;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(10px);
+  }
+  #lightbox.open { display: flex; }
+  #lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 12px; border: 1px solid var(--glass-border); }
+  .lightbox-close { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.1); border: none; color: #fff; font-size: 1.5rem; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: rgba(0,0,0,0.4);
+    border-top: 1px solid var(--glass-border);
+    padding: 40px 5% 20px;
+    text-align: center;
+    position: relative; z-index: 1;
+  }
+  footer .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 8px; }
+  footer p { color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-bottom: 4px; }
+  footer .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin: 1.2rem 0; flex-wrap: wrap; }
+  footer .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  footer .footer-links a:hover { color: var(--gold); }
+  .footer-copy { color: rgba(255,255,255,0.3); font-size: 0.8rem; margin-top: 1.5rem; }
+
+  /* Toast */
+  #toast {
+    position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(80px);
+    background: rgba(26,15,10,0.95);
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    padding: 12px 24px; border-radius: 30px;
+    font-size: 0.9rem; z-index: 5000;
+    transition: transform 0.4s ease;
+    pointer-events: none;
+  }
+  #toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: fixed; top: 70px; left: 0; right: 0;
+      background: rgba(26,15,10,0.98);
+      padding: 20px; gap: 1.5rem;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .hero-mosaic { grid-template-columns: repeat(3,1fr); }
+    .cart-panel { width: 100%; }
+    .gallery-grid, .products-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Kai Vannam <span>✦ Creations</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div style="display:flex;gap:12px;align-items:center;">
+    <button class="cart-btn" onclick="toggleCart()">🛒 Cart <span class="cart-count" id="cartCount">0</span></button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-floats">
+    <div class="float-circle"></div>
+    <div class="float-circle"></div>
+    <div class="float-circle"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">✦ HANDCRAFTED WITH LOVE FROM COIMBATORE</div>
+    <h1 class="hero-title"><em>Kai Vannam</em><br>Creations</h1>
+    <p class="hero-sub">Where every weave tells a story — handmade bags, fruit baskets &amp; wire art</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-primary">Shop Now</a>
+      <a href="#gallery" class="btn-outline">View Gallery</a>
+    </div>
+    <div class="hero-mosaic">
+      <div class="mosaic-item wide">
+        <img src="WhatsApp Image 2026-03-08 at 10.24.42 AM.jpeg">
+      </div>
+      <div class="mosaic-item">
+        <img src="/bag.jpg" alt="Handmade bag">
+      </div>
+      <div class="mosaic-item">
+        <img src="/06ab90ba-587f-40ea-a39a-c4f180638f15.jpg" alt="Woven basket">
+      </div>
+      <div class="mosaic-item">
+        <img src="/89e28c52-8cf9-4d71-8a9d-2aa69d5996f7.jpg" alt="Gift basket">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-title">About <em>Us</em></div>
+  <div class="divider"></div>
+  <p class="section-sub">Handcrafted treasures from the heart of Keeranatham, Coimbatore</p>
+  <div class="about-grid">
+    <div class="about-img">
+      <img src="/WhatsApp Image 2026-03-08 at 10.24.42 AM.jpeg">
+    </div>
+    <div class="about-text">
+      <h3>Our Story</h3>
+      <p>Kai Vannam Creations was born from a passion for traditional Tamil craftsmanship. Every product is carefully handcrafted using natural materials — each basket, bag, and wire creation carries the warmth and care of skilled hands.</p>
+      <p>Located in Keeranatham, Coimbatore, we bring you authentic handmade fruit baskets, woven bags, black rope bags, and beautiful wire art — perfect for gifting, home décor, and everyday use.</p>
+      <p>We believe in sustainable, meaningful making. No two pieces are identical — each one is unique, just like the person who owns it.</p>
+      <div class="badges">
+        <span class="badge">🌿 Natural Materials</span>
+        <span class="badge">✋ 100% Handmade</span>
+        <span class="badge">🎁 Custom Orders</span>
+        <span class="badge">📦 Doorstep Delivery</span>
+        <span class="badge">🧵 Wire Art</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-title">Our <em>Gallery</em></div>
+  <div class="divider"></div>
+  <p class="section-sub">A peek into our handcrafted world</p>
+  <div class="gallery-filters">
+    <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
+    <button class="filter-btn" onclick="filterGallery('basket', this)">Fruit Baskets</button>
+    <button class="filter-btn" onclick="filterGallery('bag', this)">Bags</button>
+    <button class="filter-btn" onclick="filterGallery('wire', this)">Wire Art</button>
+    <button class="filter-btn" onclick="filterGallery('gift', this)">Gift Items</button>
+  </div>
+  <div class="gallery-grid" id="galleryGrid">
+    <!-- Dynamically generated -->
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-title">Our <em>Products</em></div>
+  <div class="divider"></div>
+  <p class="section-sub">Every piece crafted with love — order yours today</p>
+  <div class="products-grid" id="productsGrid">
+    <!-- Dynamically generated -->
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-title">What Customers <em>Say</em></div>
+  <div class="divider"></div>
+  <p class="section-sub">Real love from our community</p>
+  <div class="testimonials-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The fruit basket I ordered was absolutely stunning! The weaving is so detailed and it arrived perfectly packed. Gifted it to my mom and she loved it!"</p>
+      <div class="testi-author">— Harini S., Coimbatore</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Ordered the black rope bag and it's even more beautiful in person. The quality is top-notch and the handwork is exceptional. Will definitely order again!"</p>
+      <div class="testi-author">— Baby Rani., Coimbatore</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Got the wire art piece as a home décor gift. Everyone who visits asks where I got it. Truly one-of-a-kind handcraft. Thank you Kai Vannam!"</p>
+      <div class="testi-author">— Pavithar K., Tiruppur</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-title">Get In <em>Touch</em></div>
+  <div class="divider"></div>
+  <p class="section-sub">We'd love to hear from you — custom orders welcome!</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Visit or Call Us</h3>
+      <div class="contact-item">
+        <span class="contact-icon">📍</span>
+        <p>Keeranatham, Coimbatore<br>Tamil Nadu, India</p>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">📞</span>
+        <p><a href="tel:+919566742697">+91 95667 42697</a></p>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">⏰</span>
+        <p>Mon – Sat: 9 AM – 7 PM<br>Sunday: By Appointment</p>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">🎁</span>
+        <p>Custom orders &amp; bulk gifting available. Contact us for pricing!</p>
+      </div>
+      <a href="https://wa.me/919566742697?text=Hi%20Kai%20Vannam%20Creations!%20I%27d%20like%20to%20place%20an%20order." class="whatsapp-btn" target="_blank">
+        <span>💬</span> Chat on WhatsApp
+      </a>
+    </div>
+    <div class="contact-form">
+      <h3>Send a Message</h3>
+      <div class="form-group">
+        <input type="text" id="cName" placeholder="Your Name">
+      </div>
+      <div class="form-group">
+        <input type="tel" id="cPhone" placeholder="Phone Number">
+      </div>
+      <div class="form-group">
+        <select id="cProduct">
+          <option value="">Select a Product</option>
+          <option>Handmade Fruit Basket – ₹120</option>
+          <option>Natural Woven Tote Bag – ₹350</option>
+          <option>Black Rope Bag – ₹500</option>
+          <option>Wire Art Décor – ₹450</option>
+          <option>Mini Gift Basket – ₹200</option>
+          <option>Custom Order</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <textarea id="cMsg" placeholder="Tell us about your requirements, custom orders, or questions..."></textarea>
+      </div>
+      <button class="btn-primary" onclick="sendEnquiry()" style="width:100%">Send Enquiry ✦</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Kai Vannam Creations</div>
+  <p>Handcrafted with ❤️ in Keeranatham, Coimbatore</p>
+  <div class="footer-links">
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#products">Shop</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="https://wa.me/919566742697" target="_blank" style="color:var(--gold);text-decoration:none;font-size:0.85rem;">📞 +91 95667 42697</a>
+  <div class="footer-copy">© 2026 Kai Vannam Creations. All rights reserved.</div>
+</footer>
+
+<!-- CART MODAL -->
+<div id="cart-modal">
+  <div class="cart-panel">
+    <div class="cart-header">
+      <h3>🛒 Your Cart</h3>
+      <button class="close-cart" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">Your cart is empty 🛒<br><small>Add some beautiful creations!</small></div>
+    </div>
+    <div class="cart-total" id="cartTotal" style="display:none">
+      <div class="cart-total-row"><span>Subtotal</span><span id="subtotalAmt">₹0</span></div>
+      <div class="cart-total-row"><span>Delivery</span><span>₹50</span></div>
+      <div class="cart-total-row final"><span>Total</span><span id="totalAmt">₹0</span></div>
+      <button class="btn-primary checkout-btn" onclick="openOrder()">Proceed to Order ✦</button>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER MODAL -->
+<div id="order-modal">
+  <div class="order-panel" id="orderPanel">
+    <h3>Place Your Order</h3>
+    <div class="order-summary" id="orderSummary"></div>
+    <div class="form-group">
+      <input type="text" id="oName" placeholder="Full Name *">
+    </div>
+    <div class="form-group">
+      <input type="tel" id="oPhone" placeholder="Phone Number *">
+    </div>
+    <div class="form-group">
+      <textarea id="oAddress" placeholder="Delivery Address *" style="height:80px;resize:none;background:rgba(255,255,255,0.08);border:1px solid var(--glass-border);border-radius:12px;padding:12px 16px;color:#fff;font-family:DM Sans,sans-serif;width:100%;outline:none;"></textarea>
+    </div>
+    <div class="form-group">
+      <select id="oPayment" style="width:100%;background:rgba(255,255,255,0.08);border:1px solid var(--glass-border);border-radius:12px;padding:12px 16px;color:#fff;font-family:DM Sans,sans-serif;outline:none;">
+        <option value="">Payment Method</option>
+        <option>Cash on Delivery</option>
+        <option>UPI / GPay / PhonePe</option>
+        <option>Bank Transfer</option>
+      </select>
+    </div>
+    <button class="btn-primary" onclick="confirmOrder()" style="width:100%">Confirm Order ✦</button>
+    <button class="btn-outline modal-close" onclick="closeOrder()" style="width:100%;margin-top:10px;text-align:center;display:block;">Cancel</button>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+// ── DATA ──
+const products = [
+  {
+    id: 1, category: 'basket',
+    name: 'Handmade Fruit Basket',
+    desc: 'Beautiful traditional fruit basket woven from natural leaves. Perfect for pooja offerings, gifting, and home décor.',
+    price: 120, badge: 'Bestseller',
+    img: '/86b02b37-5d14-408a-a3f7-56be4c59bcfe.jpg',
+    fallback: '/1911922f-4269-4716-80f8-047522af5f0d.jpg'
+  },
+  {
+    id: 2, category: 'bag',
+    name: 'Natural Woven Tote Bag',
+    desc: 'Handwoven tote bag crafted with natural fibers. Spacious, sturdy, and eco-friendly — ideal for shopping and outings.',
+    price: 650, badge: 'Popular',
+    img: '/bag.jpg',
+    fallback: '/bag.jpg'
+  },
+  {
+    id: 3, category: 'bag',
+    name: 'Black Rope Bag',
+    desc: 'Stylish black rope bag handcrafted with premium rope. Modern design meets traditional making — a fashion statement.',
+    price: 600, badge: 'Premium',
+    img: '/blackrope.jpg',
+    fallback: '/blackrope.jpg'
+  },
+  {
+    id: 4, category: 'wire',
+    name: 'Wire Art Décor Piece',
+    desc: 'Intricate wire art hand-bent into beautiful shapes. A unique home décor item that sparks conversations.',
+    price: 550, badge: 'Unique',
+    img: '/bag3.jpg',
+    fallback: '/bag3.jpg'
+  },
+  {
+    id: 5, category: 'basket',
+    name: 'Mini Gift Basket',
+    desc: 'Adorable mini basket filled with natural leaves — great for small gifts, festive arrangements, and décor.',
+    price: 250, badge: 'New',
+    img: '/4f00ba42-c878-4d83-9382-19121646b784.jpg',
+    fallback: '/4f00ba42-c878-4d83-9382-19121646b784.jpg'
+  },
+  {
+    id: 6, category: 'wire',
+    name: 'Wire Bag',
+    desc: 'Handmade wire vase that holds fresh . Delicate craftsmanship for your living space.',
+    price: 380, badge: '',
+    img: '/bag5.jpg',
+    fallback: '/bag5.jpg'
+  },
+  {
+    id: 7, category: 'bag',
+    name: 'Elegant WireBag',
+    desc: 'Classic  bag with natural texture. Durable, sustainable, and perfect for daily use.',
+    price: 420, badge: '',
+    img: '/bag4.jpg',
+    fallback: '/bag4.jpg'
+  },
+  {
+    id: 8, category: 'gift',
+    name: 'Festive Gift Hamper',
+    desc: 'A beautiful handmade gift hamper with assorted items. Perfect for weddings, and special occasions.',
+    price: 750, badge: 'Gift Ready',
+    img: '/Functiondecor.jpg',
+    fallback: '/Functiondecor.jpg'
+  }
+];
+
+const galleryItems = [
+  { cat: 'basket', img: '/476c6a9b-a895-4bf4-b687-a884f4f090f2.jpg', label: 'Traditional Fruit Baskets' },
+  { cat: 'bag', img: '/bag4.jpg', label: 'Woven Tote Bags' },
+  { cat: 'wire', img: '/bag5.jpg', label: 'Wire Art Creations' },
+  { cat: 'bag', img: '/bag.jpg', label: 'Black Rope Bags' },
+  { cat: 'gift', img: '/gift.jpg', label: 'Gift Hampers' },
+  { cat: 'basket', img: '/4f00ba42-c878-4d83-9382-19121646b784.jpg', label: 'Mini Gift Baskets' },
+  { cat: 'wire', img: '/bag3.jpg', label: 'Wire Flower Vases' },
+  { cat: 'bag', img: '/bag1.jpg', label: 'Jute Shoulder Bags' },
+  { cat: 'gift', img: '/1911922f-4269-4716-80f8-047522af5f0d.jpg', label: 'Handmade Collections' },
+];
+
+// ── CART STATE ──
+let cart = [];
+
+// ── RENDER GALLERY ──
+function renderGallery(filter = 'all') {
+  const grid = document.getElementById('galleryGrid');
+  const items = filter === 'all' ? galleryItems : galleryItems.filter(g => g.cat === filter);
+  grid.innerHTML = items.map(g => `
+    <div class="gallery-item" onclick="openLightbox('${g.img || g.fallback}')">
+      <img src="${g.img}" alt="${g.label}" onerror="this.src='${g.fallback || g.img}'" loading="lazy">
+      <div class="gallery-label">${g.label}</div>
+      <div class="overlay"><span>🔍</span></div>
+    </div>
+  `).join('');
+}
+
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGallery(cat);
+}
+
+// ── RENDER PRODUCTS ──
+function renderProducts() {
+  const grid = document.getElementById('productsGrid');
+  grid.innerHTML = products.map(p => `
+    <div class="product-card">
+      <div class="product-img">
+        <img src="${p.img}" alt="${p.name}" onerror="this.src='${p.fallback}'" loading="lazy">
+        ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+      </div>
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-footer">
+          <div class="product-price">₹${p.price}<br><small>handmade</small></div>
+          <button class="add-cart" onclick="addToCart(${p.id})">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── CART ──
+function addToCart(id) {
+  const p = products.find(x => x.id === id);
+  const existing = cart.find(x => x.id === id);
+  if (existing) existing.qty++;
+  else cart.push({ ...p, qty: 1 });
+  updateCartUI();
+  showToast(`✓ ${p.name} added to cart`);
+}
+
+function updateCartUI() {
+  const count = cart.reduce((s, x) => s + x.qty, 0);
+  document.getElementById('cartCount').textContent = count;
+
+  const itemsEl = document.getElementById('cartItems');
+  const totalEl = document.getElementById('cartTotal');
+
+  if (cart.length === 0) {
+    itemsEl.innerHTML = '<div class="cart-empty">Your cart is empty 🛒<br><small>Add some beautiful creations!</small></div>';
+    totalEl.style.display = 'none';
+    return;
+  }
+
+  itemsEl.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <img class="cart-item-img" src="${item.img}" alt="${item.name}" onerror="this.src='${item.fallback}'">
+      <div class="cart-item-info">
+        <h4>${item.name}</h4>
+        <p>₹${item.price}</p>
+        <div class="cart-item-qty">
+          <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
+          <span>${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+        </div>
+      </div>
+      <button class="cart-item-remove" onclick="removeFromCart(${item.id})">✕</button>
+    </div>
+  `).join('');
+
+  const sub = cart.reduce((s, x) => s + x.price * x.qty, 0);
+  document.getElementById('subtotalAmt').textContent = '₹' + sub;
+  document.getElementById('totalAmt').textContent = '₹' + (sub + 50);
+  totalEl.style.display = 'block';
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(x => x.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) cart = cart.filter(x => x.id !== id);
+  updateCartUI();
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(x => x.id !== id);
+  updateCartUI();
+}
+
+function toggleCart() {
+  document.getElementById('cart-modal').classList.toggle('open');
+}
+
+// ── ORDER ──
+function openOrder() {
+  if (cart.length === 0) { showToast('Cart is empty!'); return; }
+  document.getElementById('cart-modal').classList.remove('open');
+  const sub = cart.reduce((s, x) => s + x.price * x.qty, 0);
+  document.getElementById('orderSummary').innerHTML = `
+    <p><strong style="color:#fff">${cart.length} item(s)</strong>: ${cart.map(x => x.name + ' x' + x.qty).join(', ')}</p>
+    <div class="order-total">Total: ₹${sub + 50} (incl. ₹50 delivery)</div>
+  `;
+  document.getElementById('order-modal').classList.add('open');
+}
+
+function closeOrder() {
+  document.getElementById('order-modal').classList.remove('open');
+}
+
+function confirmOrder() {
+  const name = document.getElementById('oName').value.trim();
+  const phone = document.getElementById('oPhone').value.trim();
+  const address = document.getElementById('oAddress').value.trim();
+  const payment = document.getElementById('oPayment').value;
+  if (!name || !phone || !address || !payment) {
+    showToast('⚠️ Please fill all fields'); return;
+  }
+  const sub = cart.reduce((s, x) => s + x.price * x.qty, 0);
+  const msg = `🎁 *New Order - Kai Vannam Creations*\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Address: ${address}\n💳 Payment: ${payment}\n\n🛍️ *Items:*\n${cart.map(x => `• ${x.name} x${x.qty} = ₹${x.price * x.qty}`).join('\n')}\n\n💰 *Total: ₹${sub + 50}* (incl. delivery)`;
+  const waUrl = `https://wa.me/919566742697?text=${encodeURIComponent(msg)}`;
+  window.open(waUrl, '_blank');
+  document.getElementById('orderPanel').innerHTML = `
+    <div class="success-msg">
+      <div class="check">🎉</div>
+      <h4>Order Sent!</h4>
+      <p>Your order details have been sent via WhatsApp.<br>We'll confirm shortly!</p>
+    </div>
+    <button class="btn-primary modal-close" onclick="finalClose()" style="width:100%">Great, Thanks!</button>
+  `;
+  cart = [];
+  updateCartUI();
+}
+
+function finalClose() {
+  document.getElementById('order-modal').classList.remove('open');
+  document.getElementById('orderPanel').innerHTML = `
+    <h3>Place Your Order</h3>
+    <div class="order-summary" id="orderSummary"></div>
+    <div class="form-group"><input type="text" id="oName" placeholder="Full Name *"></div>
+    <div class="form-group"><input type="tel" id="oPhone" placeholder="Phone Number *"></div>
+    <div class="form-group"><textarea id="oAddress" placeholder="Delivery Address *" style="height:80px;resize:none;background:rgba(255,255,255,0.08);border:1px solid var(--glass-border);border-radius:12px;padding:12px 16px;color:#fff;font-family:DM Sans,sans-serif;width:100%;outline:none;"></textarea></div>
+    <div class="form-group"><select id="oPayment" style="width:100%;background:rgba(255,255,255,0.08);border:1px solid var(--glass-border);border-radius:12px;padding:12px 16px;color:#fff;font-family:DM Sans,sans-serif;outline:none;"><option value="">Payment Method</option><option>Cash on Delivery</option><option>UPI / GPay / PhonePe</option><option>Bank Transfer</option></select></div>
+    <button class="btn-primary" onclick="confirmOrder()" style="width:100%">Confirm Order ✦</button>
+    <button class="btn-outline modal-close" onclick="closeOrder()" style="width:100%;margin-top:10px;text-align:center;display:block;">Cancel</button>
+  `;
+}
+
+// ── CONTACT ENQUIRY ──
+function sendEnquiry() {
+  const name = document.getElementById('cName').value.trim();
+  const phone = document.getElementById('cPhone').value.trim();
+  const product = document.getElementById('cProduct').value;
+  const msg = document.getElementById('cMsg').value.trim();
+  if (!name || !phone) { showToast('⚠️ Please enter your name and phone'); return; }
+  const waMsg = `👋 *Enquiry - Kai Vannam Creations*\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n🛍️ Product: ${product || 'General'}\n💬 Message: ${msg || '-'}`;
+  window.open(`https://wa.me/919566742697?text=${encodeURIComponent(waMsg)}`, '_blank');
+  showToast('✓ Opening WhatsApp...');
+}
+
+// ── LIGHTBOX ──
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+// ── TOAST ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ── HAMBURGER ──
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// Close modals on outside click
+document.getElementById('cart-modal').addEventListener('click', function(e) {
+  if (e.target === this) toggleCart();
+});
+document.getElementById('order-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeOrder();
+});
+
+// ── INIT ──
+renderGallery();
+renderProducts();
+</script>
+</body>
+</html>
+
